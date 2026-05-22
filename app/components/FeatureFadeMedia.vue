@@ -8,14 +8,15 @@ const props = defineProps<{
 
 const img = useImage()
 
-const aspectClass = computed(() => {
-  if (props.variant === 'hero') {
-    return 'absolute inset-0'
-  }
-  return props.aspect === 'landscape'
-    ? 'aspect-[2/1] w-full lg:aspect-[5/2]'
-    : 'aspect-[16/9] w-full lg:aspect-[2/1]'
-})
+const stackedAspectClass = computed(() =>
+  props.aspect === 'landscape' ? 'aspect-[3/2] w-full' : 'aspect-[16/9] w-full',
+)
+
+const overlayAspectClass = computed(() =>
+  props.aspect === 'landscape'
+    ? 'aspect-[5/2] w-full'
+    : 'aspect-[2/1] w-full',
+)
 
 const mediaStyle = computed(() => {
   const size =
@@ -33,23 +34,34 @@ const mediaStyle = computed(() => {
 </script>
 
 <template>
-  <div
-    :class="[
-      aspectClass,
-      variant === 'feature' ? 'relative flex w-full flex-col bg-onyx' : 'bg-onyx',
-    ]"
-  >
+  <div v-if="variant === 'hero'" class="absolute inset-0 bg-onyx">
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat feature-fade-mask"
-      :class="variant === 'hero' ? 'feature-fade-mask-hero' : ''"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat feature-fade-mask-hero"
       :style="mediaStyle"
       aria-hidden="true"
     />
-    <template v-if="variant === 'feature'">
-      <p class="sr-only">{{ alt }}</p>
-      <div class="relative z-10 mt-auto w-full">
-        <slot />
-      </div>
-    </template>
+  </div>
+
+  <div v-else :class="['w-full bg-onyx lg:relative lg:flex lg:flex-col', overlayAspectClass]">
+    <!-- Mobile: full image, no overlay -->
+    <div
+      :class="stackedAspectClass"
+      class="bg-cover bg-center bg-no-repeat lg:hidden"
+      :style="mediaStyle"
+      role="img"
+      :aria-label="alt"
+    />
+
+    <!-- Desktop: background with fade into copy -->
+    <div
+      class="absolute inset-0 hidden bg-cover bg-center bg-no-repeat feature-fade-mask lg:block"
+      :style="mediaStyle"
+      aria-hidden="true"
+    />
+
+    <p class="sr-only">{{ alt }}</p>
+    <div class="relative z-10 w-full lg:mt-auto">
+      <slot />
+    </div>
   </div>
 </template>

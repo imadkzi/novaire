@@ -4,6 +4,8 @@ import type { Vehicle } from '~/types'
 
 defineProps<{
   vehicle: Vehicle
+  /** Align copy with image edges (fleet index grid) */
+  flushContent?: boolean
 }>()
 </script>
 
@@ -19,7 +21,10 @@ defineProps<{
         loading="lazy"
       />
     </NuxtLink>
-    <div class="flex flex-1 flex-col p-6 md:p-7">
+    <div
+      class="flex flex-1 flex-col"
+      :class="flushContent ? 'pt-4 pb-5' : 'p-6 md:p-7'"
+    >
       <p class="label-caps">{{ vehicleCategoryLabel(vehicle.category) }}</p>
       <h3 class="mt-2 text-lg font-semibold tracking-wide text-stone">
         <NuxtLink :to="`/fleet/${vehicle.slug}`" class="hover:text-gold">

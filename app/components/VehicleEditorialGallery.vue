@@ -35,7 +35,7 @@ function editorialImageClass(section: VehicleEditorialSection) {
           :aspect="section.aspect === 'landscape' ? 'landscape' : 'default'"
           variant="feature"
         >
-          <div class="content-wrap content-pad-x pb-12 pt-24 md:pb-14 md:pt-32 lg:pt-40">
+          <div class="content-wrap content-pad-x pb-12 pt-8 lg:pb-14 lg:pt-32 xl:pt-40">
             <p class="label-caps text-gold">{{ section.eyebrow }}</p>
             <h3 class="heading-editorial mt-3 text-stone">
               {{ section.title }}

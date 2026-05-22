@@ -10,6 +10,15 @@ usePageSeo({
 function isDarkBand(index: number) {
   return index % 2 === 0
 }
+
+/** Mobile: even rows image→text, odd rows text→image; desktop alternates columns */
+function copyOrder(index: number) {
+  return index % 2 === 0 ? 'order-2 md:order-1' : 'order-1 md:order-2'
+}
+
+function mediaOrder(index: number) {
+  return index % 2 === 0 ? 'order-1 md:order-2' : 'order-2 md:order-1'
+}
 </script>
 
 <template>
@@ -30,11 +39,18 @@ function isDarkBand(index: number) {
       class="section-pad"
       :class="isDarkBand(index) ? 'bg-charcoal' : 'bg-stone text-onyx'"
     >
-      <article
-        class="content-wrap grid gap-10 md:grid-cols-2 md:items-center md:gap-16"
-        :class="index % 2 === 1 ? 'md:[&>div:first-child]:order-2' : ''"
-      >
-        <div>
+      <article class="content-wrap grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center md:gap-16">
+        <div :class="mediaOrder(index)">
+          <AppImage
+            :src="service.image"
+            :alt="service.title"
+            class="aspect-[16/10] w-full object-cover"
+            width="700"
+            height="440"
+            loading="lazy"
+          />
+        </div>
+        <div :class="copyOrder(index)">
           <h2 class="heading-section" :class="isDarkBand(index) ? '' : 'text-onyx'">
             {{ service.title }}
           </h2>
@@ -52,14 +68,6 @@ function isDarkBand(index: number) {
             Enquire
           </NuxtLink>
         </div>
-        <AppImage
-          :src="service.image"
-          :alt="service.title"
-          class="aspect-[16/10] w-full object-cover"
-          width="700"
-          height="440"
-          loading="lazy"
-        />
       </article>
     </section>
 

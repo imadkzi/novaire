@@ -18,7 +18,7 @@ defineProps<{
         loading="lazy"
       />
     </div>
-    <div class="p-6 md:p-7">
+    <div class="pt-4 pb-5">
       <h3 class="text-lg font-semibold tracking-wide text-stone">{{ service.title }}</h3>
       <p class="mt-2 text-sm font-normal leading-relaxed text-grey">{{ service.summary }}</p>
     </div>

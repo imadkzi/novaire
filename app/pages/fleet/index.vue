@@ -50,7 +50,12 @@ const filters: { value: FleetCategory; label: string }[] = [
           </button>
         </div>
         <div class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-12 4xl:gap-14">
-          <VehicleCard v-for="vehicle in filtered" :key="vehicle.slug" :vehicle="vehicle" />
+          <VehicleCard
+            v-for="vehicle in filtered"
+            :key="vehicle.slug"
+            :vehicle="vehicle"
+            flush-content
+          />
         </div>
       </div>
     </section>
