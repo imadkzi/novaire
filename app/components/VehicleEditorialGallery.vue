@@ -31,13 +31,13 @@ function editorialImageClass(section: VehicleEditorialSection) {
       <template v-if="section.layout === 'feature'">
         <FeatureFadeMedia
           :src="section.image"
-          :alt="`${marque} ${name} — ${section.title}`"
+          :alt="`${marque} ${name}, ${section.title}`"
           :aspect="section.aspect === 'landscape' ? 'landscape' : 'default'"
           variant="feature"
         >
           <div class="content-wrap content-pad-x pb-12 pt-24 md:pb-14 md:pt-32 lg:pt-40">
             <p class="label-caps text-gold">{{ section.eyebrow }}</p>
-            <h3 class="mt-3 text-2xl font-bold uppercase tracking-wider text-stone md:text-3xl">
+            <h3 class="heading-editorial mt-3 text-stone">
               {{ section.title }}
             </h3>
             <p v-if="section.pullQuote" class="mt-4 text-base italic text-gold md:text-lg">
@@ -56,7 +56,7 @@ function editorialImageClass(section: VehicleEditorialSection) {
       >
         <div :class="section.imageRight ? 'lg:order-2' : 'lg:order-1'">
           <p class="label-caps text-charcoal/60">{{ section.eyebrow }}</p>
-          <h3 class="mt-3 text-xl font-bold uppercase tracking-wider md:text-2xl lg:text-3xl">
+          <h3 class="heading-editorial mt-3">
             {{ section.title }}
           </h3>
           <p v-if="section.pullQuote" class="mt-4 text-sm italic text-gold md:text-base">
@@ -69,7 +69,7 @@ function editorialImageClass(section: VehicleEditorialSection) {
         <div :class="section.imageRight ? 'lg:order-1' : 'lg:order-2'">
           <AppImage
             :src="section.image"
-            :alt="`${marque} ${name} — ${section.title}`"
+            :alt="`${marque} ${name}, ${section.title}`"
             :class="editorialImageClass(section)"
             width="800"
             height="1000"
@@ -83,7 +83,7 @@ function editorialImageClass(section: VehicleEditorialSection) {
           <div class="lg:col-span-8">
             <AppImage
               :src="section.image"
-              :alt="`${marque} ${name} — ${section.title}`"
+              :alt="`${marque} ${name}, ${section.title}`"
               class="image-fade-charcoal aspect-[3/2] w-full object-cover lg:image-fade-none"
               width="1200"
               height="800"
@@ -92,7 +92,7 @@ function editorialImageClass(section: VehicleEditorialSection) {
           </div>
           <div class="lg:col-span-4 lg:pt-2">
             <p class="label-caps text-gold">{{ section.eyebrow }}</p>
-            <h3 class="mt-3 text-lg font-bold uppercase tracking-wider text-stone md:text-xl">
+            <h3 class="heading-editorial mt-3 text-stone">
               {{ section.title }}
             </h3>
             <p v-if="section.pullQuote" class="mt-3 text-sm italic text-gold">

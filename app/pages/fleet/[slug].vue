@@ -89,7 +89,7 @@ usePageSeo({
     <CtaBand
       :vehicle="`${vehicle.marque} ${vehicle.name}`"
       title="Reserve this vehicle"
-      description="Share your dates, location, and vision — we will respond with availability and a tailored Novaire proposal."
+      description="Share your dates, location, and vision, we will respond with availability and a tailored Novaire proposal."
     />
   </div>
 </template>

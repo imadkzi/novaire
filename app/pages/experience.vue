@@ -4,7 +4,7 @@ import { images } from '~/data/images'
 usePageSeo({
   title: 'The Experience',
   description:
-    'Novaire is not typical car hire — quiet wealth, chauffeured precision, and self-drive supercars for discerning clients.',
+    'How Novaire works, curated fleet, trained chauffeurs, self-drive briefings, and editorial attention for weddings, galas, airports and productions.',
 })
 </script>
 
@@ -18,28 +18,33 @@ usePageSeo({
         width="1600"
         height="900"
       />
-      <div class="absolute inset-0 bg-onyx/70" />
-      <div class="relative content-wrap section-pad">
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-onyx from-20% via-onyx/80 via-50% to-onyx/25"
+      />
+      <div class="relative content-wrap section-pad pb-20">
         <p class="label-caps text-gold">The Novaire experience</p>
         <h1 class="heading-display mt-4 max-w-2xl">Quiet wealth in motion</h1>
+        <p class="mt-6 max-w-xl text-lg font-normal leading-relaxed text-stone/90">
+          Luxury transport shaped around how you arrive, not how many cars we own.
+        </p>
       </div>
     </section>
 
     <section class="section-pad bg-onyx">
       <div class="content-wrap max-w-3xl space-y-8 text-lg font-normal leading-relaxed text-grey xl:max-w-4xl 2xl:max-w-5xl 2xl:text-xl">
         <p>
-          Novaire was founded on a simple premise: luxury transport is not about getting from A to B. It is
-          about how you arrive, how you feel, and how your story is told — whether that story is a wedding,
-          a gala, a board meeting, or a music video.
+          Novaire began with a simple observation: the right vehicle at the right moment changes how an
+          entire day feels. A wedding entrance, a charity gala, a transatlantic landing, a night shoot on
+          closed roads, each asks for different pace, presentation, and discretion.
         </p>
         <p>
-          We are not a volume hire desk. Our fleet is curated. Our chauffeurs are trained to anticipate. Our
-          self-drive supercars are prepared for clients who understand that the vehicle is part of the
-          production, the celebration, or the weekend.
+          We keep the fleet intentionally small. Every Rolls-Royce and every supercar is maintained and
+          presented to editorial standard. Chauffeurs are briefed on your schedule before they collect you;
+          self-drive clients receive the same rigour, modes, routes, and recovery, before keys change hands.
         </p>
         <p>
-          Editorial in aesthetic, geometric in precision — Novaire reflects modern opulence: restrained,
-          intentional, and unmistakably premium.
+          The aesthetic is modern and restrained: geometry in layout, warmth in service, confidence without
+          noise. Novaire is for hosts, artists, and executives who care how the story looks when the door opens.
         </p>
       </div>
     </section>
@@ -50,15 +55,24 @@ usePageSeo({
         <ul class="mt-12 grid gap-10 md:grid-cols-3">
           <li>
             <p class="label-caps text-charcoal/70">Precision</p>
-            <p class="mt-3 font-normal text-charcoal/80">Timing, presentation, and route planning executed without drama.</p>
+            <p class="mt-3 font-normal text-charcoal/80">
+              Multi-stop days mapped in advance, venue access, photo holds, and flight delays absorbed without
+              you managing the diary from the back seat.
+            </p>
           </li>
           <li>
             <p class="label-caps text-charcoal/70">Discretion</p>
-            <p class="mt-3 font-normal text-charcoal/80">Your privacy and your occasion treated with equal respect.</p>
+            <p class="mt-3 font-normal text-charcoal/80">
+              Chauffeurs who understand when to converse and when to vanish. Your guest list, your venue, and
+              your privacy handled with the same care as the vehicle.
+            </p>
           </li>
           <li>
             <p class="label-caps text-charcoal/70">Presence</p>
-            <p class="mt-3 font-normal text-charcoal/80">Vehicles and service that speak softly — and carry weight.</p>
+            <p class="mt-3 font-normal text-charcoal/80">
+              Phantom, Dawn, Cullinan, SF90, Huracán, chosen because they carry weight in a frame and on a
+              kerb, not because they fill a spreadsheet.
+            </p>
           </li>
         </ul>
       </div>

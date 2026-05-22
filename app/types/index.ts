@@ -44,6 +44,7 @@ export interface Vehicle {
 
 export interface Service {
   slug: string
+  label: string
   title: string
   summary: string
   description: string

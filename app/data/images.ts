@@ -1,4 +1,4 @@
-/** Site-wide imagery — service lifestyle shots and marketing heroes */
+/** Site-wide imagery, service lifestyle shots and marketing heroes */
 export const images = {
   hero: '/images/hero.jpg',
   experience: '/images/black-cullinan/hero.png',

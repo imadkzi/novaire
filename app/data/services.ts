@@ -4,50 +4,56 @@ import { images } from '~/data/images'
 export const services: Service[] = [
   {
     slug: 'weddings',
+    label: 'Weddings',
     title: 'Weddings',
-    summary: 'Arrivals choreographed to perfection',
+    summary: 'Your timeline, choreographed to the minute',
     description:
-      'From bridal party transfers to evening departures, Novaire pairs the right vehicle with your timeline — discreet, punctual, immaculate.',
+      'From morning collections to the last dance departure, we align transport with your order of service, venues, photo holds, and family movements included. Chauffeurs are briefed in advance so you arrive composed, not rushed.',
     image: images.wedding,
   },
   {
     slug: 'galas',
+    label: 'Galas',
     title: 'Galas & Black Tie',
-    summary: 'Presence without announcement',
+    summary: 'The kerb moment, perfectly timed',
     description:
-      'Chauffeured arrivals for charity evenings, award ceremonies, and private members events where first impressions are everything.',
+      'Charity evenings, award nights, and members’ clubs need more than a car at the door. We coordinate approach, pause, and exit, chauffeur-driven when you want composure, self-drive when you want impact, while you focus on the room inside.',
     image: images.gala,
   },
   {
     slug: 'airport',
+    label: 'Airport',
     title: 'Luxury Airport Transfers',
-    summary: 'Runway to residence, seamlessly',
+    summary: 'Runway to residence without friction',
     description:
-      'Meet-and-greet coordination, flight tracking, and cabin-quiet transfers in Rolls-Royce Phantom, Dawn, and Cullinan.',
+      'Flight tracking, meet-and-greet, and calm progress from terminal to address. Whether you are landing after a long haul or coordinating guests to their hotel, every transfer is paced for ease, not hurry.',
     image: images.airport,
   },
   {
     slug: 'film',
+    label: 'Production',
     title: 'Film & Music Video',
-    summary: 'Supercars for the story',
+    summary: 'Pace that matches your unit',
     description:
-      'Self-drive exotics, on-set support, and flexible hire terms for productions that move fast.',
+      'Flexible hold times, agreed routes, and vehicles prepared before call time. We support convoy shots, artist arrivals, and fast-moving crews, chauffeur or self-drive, with briefing and handover that respect the schedule.',
     image: images.film,
   },
   {
     slug: 'self-drive',
+    label: 'Self drive',
     title: 'Self-Drive Supercars',
-    summary: 'You take the wheel',
+    summary: 'The wheel is yours, we set the stage',
     description:
-      'Curated Ferrari SF90 and Lamborghini Huracán — comprehensive briefing, premium insurance options available.',
+      'Full briefing on controls, modes, and route before you leave. Premium insurance options available. Built for weekends, content days, and clients who want to drive the experience themselves.',
     image: images.selfDrive,
   },
   {
     slug: 'chauffeur',
+    label: 'Chauffeur',
     title: 'Chauffeured Luxury',
-    summary: 'Travel as an experience',
+    summary: 'Anticipation before you ask',
     description:
-      'Professional chauffeurs, immaculately presented vehicles, and service that anticipates rather than reacts.',
+      'Professional chauffeurs, discreet presentation, and multi-stop days executed without drama. From board-level transfers to countryside estates, service is paced around your diary, not a booking reference.',
     image: images.chauffeur,
   },
 ]

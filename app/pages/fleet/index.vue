@@ -4,7 +4,8 @@ import type { FleetCategory } from '~/types'
 
 usePageSeo({
   title: 'Fleet',
-  description: 'Explore Novaire chauffeured and self-drive supercar fleet — Rolls-Royce, Bentley, Ferrari, and more.',
+  description:
+    'Novaire fleet, Rolls-Royce Phantom, Dawn and Black Badge Cullinan chauffeur hire; Ferrari SF90 and Lamborghini Huracán self-drive. UK-wide.',
 })
 
 const filter = ref<FleetCategory>('all')
@@ -27,28 +28,28 @@ const filters: { value: FleetCategory; label: string }[] = [
       <div class="content-wrap">
         <SectionHeading
           label="Fleet"
-          title="Every arrival considered"
-          description="Filter by experience — chauffeured luxury or self-drive supercars."
+          title="Choose your arrival"
+          description="Filter by chauffeur or self-drive, including Cullinan available both ways. Every car is prepared to editorial standard."
         />
-        <div class="mt-10 flex flex-wrap gap-3" role="tablist" aria-label="Filter fleet">
+        <div class="mt-10 flex flex-wrap gap-6" role="tablist" aria-label="Filter fleet">
           <button
             v-for="f in filters"
             :key="f.value"
             type="button"
             role="tab"
             :aria-selected="filter === f.value"
-            class="border px-5 py-2 text-xs font-medium uppercase tracking-widest transition-colors"
+            class="pb-1 text-sm tracking-wide transition-[color,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
             :class="
               filter === f.value
-                ? 'border-gold bg-gold text-onyx'
-                : 'border-gold/30 text-grey hover:border-gold hover:text-stone'
+                ? 'text-gold shadow-[inset_0_-1px_0_0] shadow-gold'
+                : 'text-grey hover:text-stone'
             "
             @click="filter = f.value"
           >
             {{ f.label }}
           </button>
         </div>
-        <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-10 4xl:gap-12">
+        <div class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-12 4xl:gap-14">
           <VehicleCard v-for="vehicle in filtered" :key="vehicle.slug" :vehicle="vehicle" />
         </div>
       </div>

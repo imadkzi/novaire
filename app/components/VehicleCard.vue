@@ -8,26 +8,26 @@ defineProps<{
 </script>
 
 <template>
-  <article class="group flex flex-col border border-gold/20 bg-charcoal transition-colors hover:border-gold/50">
-    <NuxtLink :to="`/fleet/${vehicle.slug}`" class="block overflow-hidden">
+  <article class="group flex flex-col bg-charcoal/80 transition-colors hover:bg-charcoal">
+    <NuxtLink :to="`/fleet/${vehicle.slug}`" class="block overflow-hidden border-b border-gold/10">
       <AppImage
         :src="vehicle.image"
         :alt="`${vehicle.marque} ${vehicle.name}`"
-        class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        class="aspect-[4/3] w-full object-cover transition-opacity duration-700 group-hover:opacity-95"
         width="600"
         height="450"
         loading="lazy"
       />
     </NuxtLink>
-    <div class="flex flex-1 flex-col p-6">
+    <div class="flex flex-1 flex-col p-6 md:p-7">
       <p class="label-caps">{{ vehicleCategoryLabel(vehicle.category) }}</p>
-      <h3 class="mt-2 text-lg font-bold uppercase tracking-wider text-stone">
+      <h3 class="mt-2 text-lg font-semibold tracking-wide text-stone">
         <NuxtLink :to="`/fleet/${vehicle.slug}`" class="hover:text-gold">
           {{ vehicle.marque }} {{ vehicle.name }}
         </NuxtLink>
       </h3>
       <p class="mt-2 flex-1 text-sm font-normal text-grey">{{ vehicle.tagline }}</p>
-      <NuxtLink :to="`/fleet/${vehicle.slug}`" class="link-gold mt-4 text-xs uppercase tracking-widest">
+      <NuxtLink :to="`/fleet/${vehicle.slug}`" class="link-gold mt-5 text-sm">
         View details
       </NuxtLink>
     </div>

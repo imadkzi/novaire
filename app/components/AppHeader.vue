@@ -48,16 +48,17 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="fixed inset-x-0 top-0 transition-colors duration-300"
+    class="fixed inset-x-0 top-0 transition-[background-color,padding] duration-300"
     :class="[
       menuOpen
         ? 'z-[110] bg-charcoal'
         : headerSolid
           ? 'z-50 bg-charcoal/95 backdrop-blur-md'
           : 'z-50 bg-transparent',
+      headerSolid ? 'py-6' : 'py-5',
     ]"
   >
-    <div class="content-wrap content-pad-x flex items-center justify-between py-5">
+    <div class="content-wrap content-pad-x flex items-center justify-between">
       <BrandLogo :variant="logoVariant" />
 
       <nav class="hidden items-center gap-10 md:flex" aria-label="Main">
@@ -65,16 +66,12 @@ onUnmounted(() => {
           v-for="link in links"
           :key="link.to"
           :to="link.to"
-          class="text-xs font-medium uppercase tracking-widest transition-colors"
-          :class="
-            route.path.startsWith(link.to)
-              ? 'text-gold'
-              : 'text-stone/80 hover:text-stone'
-          "
+          class="nav-link pb-0.5"
+          :class="route.path.startsWith(link.to) ? 'nav-link-active' : ''"
         >
           {{ link.label }}
         </NuxtLink>
-        <NuxtLink to="/contact" class="btn-primary"> Request quote </NuxtLink>
+        <NuxtLink to="/contact" class="btn-primary">Request quote</NuxtLink>
       </nav>
 
       <button
@@ -115,19 +112,19 @@ onUnmounted(() => {
         aria-modal="true"
         aria-label="Navigation menu"
       >
-        <nav class="content-wrap content-pad-x flex flex-1 flex-col overflow-y-auto pb-28 pt-24">
+        <nav class="content-wrap content-pad-x flex flex-1 flex-col overflow-y-auto pb-28 pt-28">
           <NuxtLink
             v-for="link in links"
             :key="link.to"
             :to="link.to"
-            class="border-b border-gold/20 py-5 text-lg font-medium uppercase tracking-widest text-stone"
+            class="border-b border-gold/10 py-5 text-lg tracking-wide text-stone transition-colors hover:text-gold"
             @click="menuOpen = false"
           >
             {{ link.label }}
           </NuxtLink>
           <NuxtLink
             to="/contact"
-            class="btn-primary-solid mt-8 text-center"
+            class="btn-primary-solid mt-10 text-center"
             @click="menuOpen = false"
           >
             Request quote

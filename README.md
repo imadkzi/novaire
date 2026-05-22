@@ -1,6 +1,6 @@
 # Novaire
 
-Luxury showcase site for Novaire — chauffeured and self-drive supercars, weddings, galas, airport transfers, and film hire.
+Luxury showcase site for Novaire: chauffeured and self-drive supercars, weddings, galas, airport transfers, and film hire.
 
 ## Stack
 

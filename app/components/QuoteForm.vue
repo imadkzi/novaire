@@ -98,7 +98,7 @@ async function onSubmit() {
           type="text"
           required
           autocomplete="name"
-          class="w-full border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+          class="form-input"
         />
       </div>
       <div>
@@ -109,7 +109,7 @@ async function onSubmit() {
           type="email"
           required
           autocomplete="email"
-          class="w-full border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+          class="form-input"
         />
       </div>
     </div>
@@ -122,7 +122,7 @@ async function onSubmit() {
           v-model="form.phone"
           type="tel"
           autocomplete="tel"
-          class="w-full border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+          class="form-input"
         />
       </div>
       <div>
@@ -130,7 +130,7 @@ async function onSubmit() {
         <select
           id="service"
           v-model="form.service"
-          class="w-full border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+          class="form-input"
         >
           <option value="">Select…</option>
           <option v-for="opt in serviceOptions" :key="opt" :value="opt">{{ opt }}</option>
@@ -146,7 +146,7 @@ async function onSubmit() {
           v-model="form.vehicle"
           type="text"
           placeholder="Optional"
-          class="w-full border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+          class="form-input"
         />
       </div>
       <div>
@@ -155,7 +155,7 @@ async function onSubmit() {
           id="date"
           v-model="form.date"
           type="date"
-          class="w-full border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+          class="form-input"
         />
       </div>
     </div>
@@ -167,12 +167,12 @@ async function onSubmit() {
         v-model="form.message"
         rows="5"
         required
-        class="w-full resize-y border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none focus:border-gold focus:ring-1 focus:ring-gold"
+        class="form-input resize-y"
       />
     </div>
 
     <p v-if="status === 'success'" class="text-sm text-onyx" role="status">
-      Thank you. Our team will be in touch shortly.
+      Thank you, we have your enquiry and will be in touch within one business day.
     </p>
     <p v-if="status === 'error'" class="text-sm text-red-800" role="alert">{{ errorMessage }}</p>
 

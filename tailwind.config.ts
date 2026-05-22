@@ -12,8 +12,8 @@ export default {
         onyx: '#010101',
         charcoal: '#151719',
         stone: '#E5DDD5',
-        gold: '#BF9D6E',
-        grey: '#C1B1BF',
+        gold: '#B8956A',
+        grey: '#A8A29E',
       },
       fontFamily: {
         sans: ['Dienstag', 'Montserrat', 'system-ui', 'sans-serif'],
@@ -23,13 +23,13 @@ export default {
         wider: '0.12em',
       },
       maxWidth: {
-        // Tiered content width — scales up on large / 4K displays
-        content: '72rem', // 1152px — laptop default
+        // Tiered content width - scales up on large / 4K displays
+        content: '72rem', // 1152px - laptop default
         'content-lg': '80rem', // 1280px
         'content-xl': '92rem', // 1472px
         'content-2xl': '104rem', // 1664px
-        'content-3xl': '118rem', // 1888px — QHD / 4K
-        'content-4xl': '132rem', // 2112px — ultra-wide 4K
+        'content-3xl': '118rem', // 1888px - QHD / 4K
+        'content-4xl': '132rem', // 2112px - ultra-wide 4K
       },
     },
   },

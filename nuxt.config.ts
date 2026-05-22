@@ -17,12 +17,12 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en-GB' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Novaire — Chauffeured & Self-Drive Supercars',
+      title: 'Novaire, Chauffeured & Self-Drive Supercars',
       meta: [
         {
           name: 'description',
           content:
-            'Novaire delivers chauffeured luxury, self-drive supercars, and bespoke experiences — weddings, galas, airport transfers, and film productions.',
+            'Novaire, chauffeured Rolls-Royce and self-drive Ferrari and Lamborghini for weddings, galas, airport transfers and film. UK-wide.',
         },
       ],
       link: [
