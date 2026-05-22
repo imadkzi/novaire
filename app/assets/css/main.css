@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Dienstag';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Montserrat');
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-onyx font-sans text-stone;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-stone;
+  }
+}
+
+@layer components {
+  .label-caps {
+    @apply text-xs font-medium uppercase tracking-widest text-grey;
+  }
+
+  .heading-display {
+    @apply text-4xl font-bold uppercase tracking-wider text-stone md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-7xl;
+  }
+
+  .heading-section {
+    @apply text-2xl font-bold uppercase tracking-wider text-stone md:text-3xl xl:text-4xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center border border-gold bg-transparent px-8 py-3 text-xs font-medium uppercase tracking-widest text-gold transition-colors duration-300 hover:bg-gold hover:text-onyx;
+  }
+
+  .btn-primary-solid {
+    @apply inline-flex items-center justify-center border border-gold bg-gold px-8 py-3 text-xs font-medium uppercase tracking-widest text-onyx transition-colors duration-300 hover:bg-transparent hover:text-gold;
+  }
+
+  .btn-on-stone {
+    @apply inline-flex items-center justify-center border border-onyx bg-onyx px-8 py-3 text-xs font-medium uppercase tracking-widest text-stone transition-colors duration-300 hover:bg-transparent hover:text-onyx;
+  }
+
+  .link-gold {
+    @apply text-gold underline-offset-4 transition-colors hover:text-stone hover:underline;
+  }
+
+  .content-pad-x {
+    @apply px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-24 3xl:px-28 4xl:px-32;
+  }
+
+  .section-pad {
+    @apply content-pad-x py-20 md:py-28 xl:py-32 2xl:py-36;
+  }
+
+  .content-wrap {
+    @apply mx-auto w-full max-w-content lg:max-w-content-lg xl:max-w-content-xl 2xl:max-w-content-2xl 3xl:max-w-content-3xl 4xl:max-w-content-4xl;
+  }
+
+  /* Dissolve photo into bg-onyx (not a dark scrim bar) */
+  .feature-fade-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 38%,
+      rgba(0, 0, 0, 0.75) 58%,
+      rgba(0, 0, 0, 0.25) 78%,
+      transparent 92%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 38%,
+      rgba(0, 0, 0, 0.75) 58%,
+      rgba(0, 0, 0, 0.25) 78%,
+      transparent 92%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  .feature-fade-mask-hero {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 42%,
+      rgba(0, 0, 0, 0.7) 62%,
+      rgba(0, 0, 0, 0.2) 80%,
+      transparent 94%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 42%,
+      rgba(0, 0, 0, 0.7) 62%,
+      rgba(0, 0, 0, 0.2) 80%,
+      transparent 94%
+    );
+  }
+
+  .image-fade-charcoal {
+    display: block;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:image-fade-none {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none" aria-hidden="true">
+  <path d="M4 4h12l8 20-8 20H4l8-20L4 4z" fill="#BF9D6E"/>
+  <path d="M20 4h12l-8 20 8 20H20l8-20-8-20z" fill="#BF9D6E"/>
+  <text x="44" y="32" fill="#BF9D6E" font-family="Montserrat, system-ui, sans-serif" font-size="14" font-weight="600" letter-spacing="0.35em">NOVAIRE</text>
+</svg>
