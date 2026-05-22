@@ -35,8 +35,8 @@ const featuredServices = services.slice(0, 3)
           Arrive with<br />intention.
         </h1>
         <p class="mt-6 max-w-lg text-lg font-normal leading-relaxed text-stone/90 md:text-xl">
-          Chauffeured Phantom, Dawn and Cullinan. Self-drive SF90 and Huracán, for weddings, galas,
-          airport transfers and productions across the UK.
+          Chauffeured luxury and self-drive supercars for weddings, galas, airport transfers and
+          productions across the UK.
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
           <NuxtLink to="/fleet" class="btn-primary-solid">Explore fleet</NuxtLink>
@@ -49,8 +49,8 @@ const featuredServices = services.slice(0, 3)
       <div class="content-wrap">
         <SectionHeading
           label="The fleet"
-          title="Six cars. Zero compromise."
-          description="A curated line-up, chauffeur-driven Rolls-Royce or self-drive Ferrari and Lamborghini, chosen for presence, not fleet size."
+          title="Curated for presence"
+          description="A hand-picked fleet for chauffeur and self-drive hire. Right car. Right moment."
         />
         <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-10 3xl:grid-cols-3 4xl:gap-12">
           <VehicleCard v-for="vehicle in featured" :key="vehicle.slug" :vehicle="vehicle" />
