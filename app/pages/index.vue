@@ -98,13 +98,13 @@ const homeTestimonials = getHomeTestimonials()
           </p>
           <NuxtLink to="/experience" class="btn-on-stone mt-8">Our experience</NuxtLink>
         </div>
-        <div class="space-y-10">
+        <div class="space-y-6 md:space-y-8">
           <TestimonialQuote
             v-for="(item, index) in homeTestimonials"
             :key="item.id"
             :testimonial="item"
             :emphasized="index === 0"
-            class="pl-8"
+            compact
           />
           <p class="text-sm">
             <NuxtLink to="/experience" class="link-gold-on-stone">More notes from recent hires →</NuxtLink>
@@ -113,7 +113,7 @@ const homeTestimonials = getHomeTestimonials()
       </div>
     </section>
 
-    <TrustStrip />
+    <TrustStrip class="hidden md:block" />
 
     <CtaBand />
   </div>

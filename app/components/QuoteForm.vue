@@ -124,6 +124,10 @@ const eventStepValid = computed(
 const finalStepValid = computed(() => form.message.trim().length > 0)
 const stepProgress = computed(() => (step.value / 3) * 100)
 
+const stepLabels = ['Personal details', 'Event details', 'Vehicle & notes'] as const
+
+const currentStepLabel = computed(() => stepLabels[step.value - 1])
+
 if (route.query.vehicle && typeof route.query.vehicle === 'string') {
   const q = route.query.vehicle.toLowerCase()
   const match = vehicleOptions.value.find((o) => o.label.toLowerCase().includes(q))
@@ -461,7 +465,18 @@ async function onSubmit() {
       <div class="stepper-track" aria-hidden="true">
         <div class="stepper-fill" :style="{ width: `${stepProgress}%` }" />
       </div>
-      <div class="flex flex-wrap items-center gap-3 text-xs tracking-wide text-charcoal/70">
+
+      <p
+        class="text-sm text-charcoal/80 md:hidden"
+        role="status"
+        aria-live="polite"
+        aria-current="step"
+      >
+        <span class="label-caps text-charcoal/60">Step {{ step }} of 3</span>
+        <span class="mt-1 block font-medium text-onyx">{{ currentStepLabel }}</span>
+      </p>
+
+      <div class="hidden flex-wrap items-center gap-3 text-xs tracking-wide text-charcoal/70 md:flex">
         <span
           class="step-pill"
           :class="step === 1 ? 'border-gold bg-gold text-onyx' : 'border-onyx/30 text-charcoal/70'"
