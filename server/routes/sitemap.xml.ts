@@ -4,7 +4,7 @@ export default defineEventHandler((event) => {
   const config = useRuntimeConfig()
   const base = config.public.siteUrl as string
 
-  const staticRoutes = ['', '/fleet', '/services', '/experience', '/contact']
+  const staticRoutes = ['', '/fleet', '/services', '/experience', '/contact', '/faq', '/privacy', '/terms']
   const fleetRoutes = fleet.map((v) => `/fleet/${v.slug}`)
 
   const urls = [...staticRoutes, ...fleetRoutes]

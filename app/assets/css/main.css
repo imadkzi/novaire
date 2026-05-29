@@ -16,7 +16,7 @@
   }
 
   body {
-    @apply bg-onyx font-sans leading-relaxed text-stone/90;
+    @apply bg-onyx font-sans font-medium leading-relaxed text-stone/90;
   }
 
   ::selection {
@@ -42,27 +42,65 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center border border-gold bg-transparent px-8 py-3.5 text-sm font-medium tracking-wide text-gold transition-colors duration-300 hover:bg-gold hover:text-onyx focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-onyx;
+    @apply inline-flex items-center justify-center border border-gold bg-transparent px-8 py-3.5 text-sm font-medium tracking-wide text-gold transition-[color,background-color,box-shadow,transform] duration-300 hover:bg-gold hover:text-onyx active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-onyx disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-45;
   }
 
   .btn-primary-solid {
-    @apply inline-flex items-center justify-center border border-gold bg-gold px-8 py-3.5 text-sm font-medium tracking-wide text-onyx transition-colors duration-300 hover:bg-transparent hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-onyx;
+    @apply inline-flex items-center justify-center border border-gold bg-gold px-8 py-3.5 text-sm font-medium tracking-wide text-onyx shadow-[0_8px_24px_-12px_rgba(184,149,106,0.35)] transition-[color,background-color,box-shadow,transform] duration-300 hover:border-[#a68455] hover:bg-[#a68455] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-onyx disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-45;
   }
 
   .btn-on-stone {
-    @apply inline-flex items-center justify-center border border-onyx bg-onyx px-8 py-3.5 text-sm font-medium tracking-wide text-stone transition-colors duration-300 hover:bg-transparent hover:text-onyx focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-stone;
+    @apply inline-flex items-center justify-center border border-onyx bg-onyx px-8 py-3.5 text-sm font-medium tracking-wide text-stone shadow-[0_8px_24px_-12px_rgba(1,1,1,0.2)] transition-[color,background-color,box-shadow,transform] duration-300 hover:border-onyx hover:bg-transparent hover:text-onyx hover:shadow-[0_4px_16px_-8px_rgba(1,1,1,0.15)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-stone disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-45;
   }
 
+  .btn-on-stone-outline {
+    @apply inline-flex items-center justify-center border border-onyx bg-transparent px-8 py-3.5 text-sm font-medium tracking-wide text-onyx transition-[color,background-color,box-shadow,transform] duration-300 hover:border-onyx hover:bg-onyx hover:text-stone hover:shadow-[0_8px_24px_-12px_rgba(1,1,1,0.2)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-stone disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-45;
+  }
+
+  .btn-sm {
+    @apply px-6 py-2.5 text-xs;
+  }
+
+  /* Text CTAs on dark (charcoal / onyx) backgrounds */
   .link-gold {
-    @apply text-gold underline-offset-4 decoration-gold/40 transition-[color,text-decoration-color] duration-300 hover:text-stone hover:underline hover:decoration-gold;
+    @apply text-gold underline underline-offset-4 decoration-gold/30 transition-[color,text-decoration-color] duration-300 hover:text-stone hover:decoration-gold;
+  }
+
+  /* Text CTAs on bg-stone — never use hover:text-stone (matches the background) */
+  .link-gold-on-stone {
+    @apply text-gold underline underline-offset-4 decoration-gold/30 transition-[color,text-decoration-color] duration-300 hover:text-onyx hover:decoration-gold;
   }
 
   .form-input {
-    @apply w-full border border-onyx/20 bg-white/50 px-4 py-3 text-onyx outline-none transition-[border-color,box-shadow] duration-300 focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40 focus-visible:ring-offset-0;
+    @apply w-full border border-onyx/20 bg-white/50 px-4 py-3 font-medium text-onyx outline-none transition-[border-color,box-shadow] duration-300 focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/40 focus-visible:ring-offset-0;
+  }
+
+  .form-panel {
+    @apply rounded-xl border border-onyx/15 bg-stone p-6 shadow-[0_12px_40px_-24px_rgba(1,1,1,0.25)] md:p-8;
+  }
+
+  .form-success {
+    @apply space-y-5 rounded-xl bg-stone p-2 text-onyx md:p-4;
+  }
+
+  .glass-surface {
+    @apply rounded-lg border border-onyx/15 bg-white/60 shadow-[0_8px_24px_-20px_rgba(1,1,1,0.18)];
+  }
+
+  .step-pill {
+    @apply inline-flex h-7 min-w-7 items-center justify-center rounded-full border px-2 text-xs font-medium tracking-wide;
+  }
+
+  .stepper-track {
+    @apply h-1 w-full overflow-hidden rounded-full bg-onyx/10;
+  }
+
+  .stepper-fill {
+    @apply h-full bg-gold transition-all duration-300;
   }
 
   .nav-link {
-    @apply text-sm tracking-wide text-stone/80 transition-[color,box-shadow] duration-300 hover:text-stone;
+    @apply text-sm font-medium tracking-wide text-stone/80 transition-[color,box-shadow] duration-300 hover:text-stone;
   }
 
   .nav-link-active {
@@ -79,6 +117,18 @@
 
   .content-wrap {
     @apply mx-auto w-full max-w-content lg:max-w-content-lg xl:max-w-content-xl 2xl:max-w-content-2xl 3xl:max-w-content-3xl 4xl:max-w-content-4xl;
+  }
+
+  .prose-novaire h2 + p {
+    @apply mt-3;
+  }
+
+  .prose-novaire ul {
+    @apply mt-3 list-disc space-y-2 pl-5;
+  }
+
+  .fixed-safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
 
   .page-enter {
@@ -162,6 +212,17 @@
     .lg\:image-fade-none {
       -webkit-mask-image: none;
       mask-image: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-enter,
+    .hero-ken-burns {
+      animation: none;
+    }
+
+    .motion-safe-transition {
+      transition: none;
     }
   }
 }

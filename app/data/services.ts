@@ -5,6 +5,7 @@ export const services: Service[] = [
   {
     slug: 'weddings',
     label: 'Weddings',
+    formLabel: 'Wedding',
     title: 'Weddings',
     summary: 'Your timeline, choreographed to the minute',
     description:
@@ -14,6 +15,7 @@ export const services: Service[] = [
   {
     slug: 'galas',
     label: 'Galas',
+    formLabel: 'Gala / Black tie',
     title: 'Galas & Black Tie',
     summary: 'The kerb moment, perfectly timed',
     description:
@@ -23,6 +25,7 @@ export const services: Service[] = [
   {
     slug: 'airport',
     label: 'Airport',
+    formLabel: 'Airport transfer',
     title: 'Luxury Airport Transfers',
     summary: 'Runway to residence without friction',
     description:
@@ -32,6 +35,7 @@ export const services: Service[] = [
   {
     slug: 'film',
     label: 'Production',
+    formLabel: 'Film / Music video',
     title: 'Film & Music Video',
     summary: 'Pace that matches your unit',
     description:
@@ -41,6 +45,7 @@ export const services: Service[] = [
   {
     slug: 'self-drive',
     label: 'Self drive',
+    formLabel: 'Self-drive supercar',
     title: 'Self-Drive Supercars',
     summary: 'The wheel is yours, we set the stage',
     description:
@@ -50,6 +55,7 @@ export const services: Service[] = [
   {
     slug: 'chauffeur',
     label: 'Chauffeur',
+    formLabel: 'Chauffeured hire',
     title: 'Chauffeured Luxury',
     summary: 'Anticipation before you ask',
     description:
@@ -57,3 +63,28 @@ export const services: Service[] = [
     image: images.chauffeur,
   },
 ]
+
+export const serviceFormLabels = services.map((s) => s.formLabel)
+
+export function getServiceBySlug(slug: string): Service | undefined {
+  return services.find((s) => s.slug === slug)
+}
+
+/** Homepage filmstrip: weddings, self-drive, film & music video */
+export function getHomeFeaturedServices(): Service[] {
+  const slugs = ['weddings', 'self-drive', 'film'] as const
+  return slugs.map((slug) => getServiceBySlug(slug)).filter((s): s is Service => Boolean(s))
+}
+
+/** Map ?service= slug (or legacy title) to form select value */
+export function resolveServiceFormValue(query: string): string {
+  if (!query.trim()) return ''
+  const normalized = query.trim().toLowerCase()
+  const bySlug = services.find((s) => s.slug === normalized)
+  if (bySlug) return bySlug.formLabel
+  const byFormLabel = services.find((s) => s.formLabel.toLowerCase() === normalized)
+  if (byFormLabel) return byFormLabel.formLabel
+  const byTitle = services.find((s) => s.title.toLowerCase() === normalized)
+  if (byTitle) return byTitle.formLabel
+  return query
+}

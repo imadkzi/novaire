@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { phone, telHref, hasPhone, whatsappHref, hasWhatsapp } = useContactLinks()
+
 usePageSeo({
   title: 'Contact',
   description:
@@ -21,6 +23,16 @@ usePageSeo({
               <span class="label-caps mr-2 text-stone">Email</span>
               <a href="mailto:enquiries@novaire.co.uk" class="link-gold">enquiries@novaire.co.uk</a>
             </p>
+            <p v-if="hasPhone">
+              <span class="label-caps mr-2 text-stone">Phone</span>
+              <a :href="telHref" class="link-gold">{{ phone }}</a>
+            </p>
+            <p v-if="hasWhatsapp">
+              <span class="label-caps mr-2 text-stone">WhatsApp</span>
+              <a :href="whatsappHref" class="link-gold" target="_blank" rel="noopener noreferrer">
+                Message us
+              </a>
+            </p>
             <p class="font-normal leading-relaxed">
               Helpful details: guest numbers, pick-up and drop-off locations, and whether you need chauffeur or
               self-drive.
@@ -29,9 +41,19 @@ usePageSeo({
               <span class="text-stone">Film & production:</span> include shoot dates, base location, unit size,
               and any access or permit notes so we can quote accurately first time.
             </p>
+            <p class="font-normal leading-relaxed">
+              <NuxtLink to="/faq" class="link-gold text-sm">Common questions →</NuxtLink>
+            </p>
           </div>
         </div>
-        <div class="bg-stone p-8 md:p-10">
+        <div class="form-panel">
+          <p class="mb-4 text-xs text-charcoal/70">
+            By submitting you agree to our
+            <NuxtLink to="/privacy" class="link-gold-on-stone">privacy policy</NuxtLink>
+            and
+            <NuxtLink to="/terms" class="link-gold-on-stone">terms of hire</NuxtLink>.
+            We aim to reply within one business day.
+          </p>
           <QuoteForm />
         </div>
       </div>

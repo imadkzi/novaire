@@ -3,10 +3,13 @@ const route = useRoute()
 const menuOpen = ref(false)
 const scrolled = ref(false)
 
+const { telHref, hasPhone } = useContactLinks()
+
 const links = [
   { to: '/fleet', label: 'Fleet' },
   { to: '/services', label: 'Services' },
   { to: '/experience', label: 'Experience' },
+  { to: '/faq', label: 'FAQ' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -71,6 +74,7 @@ onUnmounted(() => {
         >
           {{ link.label }}
         </NuxtLink>
+        <a v-if="hasPhone" :href="telHref" class="nav-link hidden lg:inline">Call</a>
         <NuxtLink to="/contact" class="btn-primary">Request quote</NuxtLink>
       </nav>
 

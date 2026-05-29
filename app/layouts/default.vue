@@ -1,3 +1,13 @@
+<script setup lang="ts">
+const { hydrate } = useCookieConsent()
+
+useOrganizationJsonLd()
+
+onMounted(() => {
+  hydrate()
+})
+</script>
+
 <template>
   <div class="flex min-h-screen flex-col">
     <AppHeader />
@@ -6,6 +16,7 @@
     </main>
     <AppFooter />
     <MobileQuoteBar />
+    <CookieConsent />
     <NuxtRouteAnnouncer />
   </div>
 </template>

@@ -14,16 +14,18 @@ export function usePageSeo(options: {
       : `${siteUrl}${options.image}`
     : `${siteUrl}/brand/logo.svg`
 
+  const fullTitle = `${options.title} | Novaire`
+
   useSeoMeta({
-    title: `${options.title} | Novaire`,
+    title: fullTitle,
     description: options.description,
-    ogTitle: options.title,
+    ogTitle: fullTitle,
     ogDescription: options.description,
     ogUrl: url,
     ogImage: image,
     ogType: 'website',
     twitterCard: 'summary_large_image',
-    twitterTitle: options.title,
+    twitterTitle: fullTitle,
     twitterDescription: options.description,
     twitterImage: image,
   })

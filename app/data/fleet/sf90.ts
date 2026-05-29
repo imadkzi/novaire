@@ -66,5 +66,4 @@ export const sf90 = buildVehicle(FOLDER, {
     { label: 'Layout', value: 'Plug-in hybrid' },
     { label: 'Availability', value: 'UK-wide' },
   ],
-  featured: true,
 })

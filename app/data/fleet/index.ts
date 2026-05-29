@@ -3,7 +3,9 @@ import { blackCullinan } from './black-cullinan'
 import { dawn } from './dawn'
 import { greyCullinan } from './grey-cullinan'
 import { huracan } from './huracan'
+import { orangeHuracanEvo } from './orange-huracan-evo'
 import { phantom } from './phantom'
+import { purpleHuracan } from './purple-huracan'
 import { sf90 } from './sf90'
 
 export function vehicleCategoryLabel(category: VehicleCategory): string {
@@ -30,6 +32,8 @@ export const fleet: Vehicle[] = [
   dawn,
   sf90,
   huracan,
+  orangeHuracanEvo,
+  purpleHuracan,
   blackCullinan,
   greyCullinan,
 ]
@@ -40,4 +44,25 @@ export function getVehicle(slug: string): Vehicle | undefined {
 
 export function getFeaturedFleet(): Vehicle[] {
   return fleet.filter((v) => v.featured)
+}
+
+function relatedScore(candidate: Vehicle, current: Vehicle): number {
+  let score = 0
+  if (candidate.category === current.category) score += 3
+  else if (candidate.category === 'both' || current.category === 'both') score += 2
+  if (candidate.marque === current.marque) score += 1
+  return score
+}
+
+export function getRelatedVehicles(vehicle: Vehicle, limit = 3): Vehicle[] {
+  return fleet
+    .filter((v) => v.slug !== vehicle.slug)
+    .sort((a, b) => relatedScore(b, vehicle) - relatedScore(a, vehicle))
+    .slice(0, limit)
+}
+
+export function getPopularServiceSlugsForVehicle(category: VehicleCategory): string[] {
+  if (category === 'self-drive') return ['self-drive', 'film']
+  if (category === 'chauffeur') return ['weddings', 'galas', 'airport', 'chauffeur']
+  return ['weddings', 'airport', 'film', 'chauffeur']
 }

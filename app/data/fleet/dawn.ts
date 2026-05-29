@@ -75,5 +75,4 @@ export const dawn = buildVehicle(FOLDER, {
     { label: 'Drivetrain', value: 'RWD · 8-speed' },
     { label: 'Availability', value: 'UK-wide' },
   ],
-  featured: true,
 })

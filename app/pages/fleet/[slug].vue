@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { getVehicle, vehicleCategoryLabelLong } from '~/data/fleet'
+import {
+  getPopularServiceSlugsForVehicle,
+  getRelatedVehicles,
+  getVehicle,
+  vehicleCategoryLabelLong,
+} from '~/data/fleet'
+import { getServiceBySlug } from '~/data/services'
 
 const route = useRoute()
 const slug = route.params.slug as string
@@ -9,11 +15,18 @@ if (!vehicle) {
   throw createError({ statusCode: 404, statusMessage: 'Vehicle not found' })
 }
 
+const related = getRelatedVehicles(vehicle)
+const popularServices = getPopularServiceSlugsForVehicle(vehicle.category)
+  .map((serviceSlug) => getServiceBySlug(serviceSlug))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s))
+
 usePageSeo({
   title: `${vehicle.marque} ${vehicle.name}`,
   description: vehicle.description,
   image: vehicle.image,
 })
+
+useVehicleJsonLd(vehicle)
 </script>
 
 <template>
@@ -64,6 +77,25 @@ usePageSeo({
       </div>
     </section>
 
+    <section v-if="popularServices.length" class="border-t border-gold/10 bg-charcoal/50">
+      <div class="content-wrap section-pad py-12 md:py-16">
+        <p class="label-caps">Popular for</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <NuxtLink
+            v-for="service in popularServices"
+            :key="service.slug"
+            :to="{ path: '/contact', query: { service: service.slug, vehicle: `${vehicle.marque} ${vehicle.name}` } }"
+            class="rounded border border-gold/25 px-4 py-2 text-sm tracking-wide text-stone transition-colors duration-300 hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          >
+            {{ service.label }}
+          </NuxtLink>
+          <NuxtLink to="/services" class="link-gold self-center text-sm">
+            All services →
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <VehicleEditorialGallery
       :sections="vehicle.editorial"
       :marque="vehicle.marque"
@@ -83,6 +115,19 @@ usePageSeo({
             <dd class="mt-2 text-sm text-stone">{{ spec.value }}</dd>
           </div>
         </dl>
+      </div>
+    </section>
+
+    <section v-if="related.length" class="section-pad bg-charcoal">
+      <div class="content-wrap">
+        <SectionHeading
+          label="Also consider"
+          title="Related vehicles"
+          description="Other cars in the fleet that suit a similar occasion or driving style."
+        />
+        <div class="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <VehicleCard v-for="item in related" :key="item.slug" :vehicle="item" flush-content />
+        </div>
       </div>
     </section>
 

@@ -5,7 +5,7 @@ import type { FleetCategory } from '~/types'
 usePageSeo({
   title: 'Fleet',
   description:
-    'Novaire fleet, Rolls-Royce Phantom, Dawn and Black Badge Cullinan chauffeur hire; Ferrari SF90 and Lamborghini Huracán self-drive. UK-wide.',
+    'Novaire fleet, Rolls-Royce Phantom, Dawn and Cullinan, Ferrari SF90, and three Lamborghini Huracán variants for chauffeur and self-drive hire. UK-wide.',
 })
 
 const filter = ref<FleetCategory>('all')
@@ -57,6 +57,7 @@ const filters: { value: FleetCategory; label: string }[] = [
             flush-content
           />
         </div>
+        <FleetCompare />
       </div>
     </section>
     <CtaBand />

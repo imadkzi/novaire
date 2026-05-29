@@ -1,11 +1,20 @@
 <script setup lang="ts">
+const config = useRuntimeConfig()
 const year = new Date().getFullYear()
+const phone = computed(() => (config.public.phoneNumber as string)?.trim() || '')
 
 const footerLinks = [
   { to: '/fleet', label: 'Fleet' },
   { to: '/services', label: 'Services' },
   { to: '/experience', label: 'Experience' },
+  { to: '/faq', label: 'FAQ' },
   { to: '/contact', label: 'Contact' },
+]
+
+const legalLinks = [
+  { to: '/privacy', label: 'Privacy' },
+  { to: '/privacy#cookies', label: 'Cookies' },
+  { to: '/terms', label: 'Terms of hire' },
 ]
 </script>
 
@@ -16,7 +25,8 @@ const footerLinks = [
         <div>
           <BrandLogo variant="gold" class="[&_svg]:h-7" />
           <p class="mt-4 max-w-xs text-sm font-normal leading-relaxed text-grey">
-            Rolls-Royce chauffeur hire and Ferrari, Lamborghini self-drive, curated for hosts who care how they arrive.
+            Rolls-Royce chauffeur hire and Ferrari, Lamborghini Huracán self-drive, curated for hosts who care how they
+            arrive.
           </p>
         </div>
         <div>
@@ -34,12 +44,24 @@ const footerLinks = [
           <p class="text-sm text-stone/80">
             <a href="mailto:enquiries@novaire.co.uk" class="link-gold">enquiries@novaire.co.uk</a>
           </p>
-          <NuxtLink to="/contact" class="btn-primary mt-4 px-6 py-2.5 text-xs">Request a quote</NuxtLink>
+          <p v-if="phone" class="mt-2 text-sm text-stone/80">
+            <a :href="`tel:${phone.replace(/\s/g, '')}`" class="link-gold">{{ phone }}</a>
+          </p>
+          <NuxtLink to="/contact" class="btn-primary btn-sm mt-4">Request a quote</NuxtLink>
         </div>
       </div>
-      <p class="mt-8 border-t border-gold/10 pt-6 text-center text-xs text-grey">
-        © {{ year }} Novaire. All rights reserved.
-      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-gold/10 pt-6 text-xs text-grey">
+        <NuxtLink
+          v-for="link in legalLinks"
+          :key="link.to"
+          :to="link.to"
+          class="transition-colors hover:text-gold"
+        >
+          {{ link.label }}
+        </NuxtLink>
+        <span class="hidden text-charcoal/40 sm:inline">·</span>
+        <span>© {{ year }} Novaire. All rights reserved.</span>
+      </div>
     </div>
   </footer>
 </template>

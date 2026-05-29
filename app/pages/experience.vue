@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { images } from '~/data/images'
+import { testimonials } from '~/data/testimonials'
 
 usePageSeo({
   title: 'The Experience',
   description:
     'How Novaire works, curated fleet, trained chauffeurs, self-drive briefings, and editorial attention for weddings, galas, airports and productions.',
+  image: images.experience,
 })
 </script>
 
@@ -70,11 +72,23 @@ usePageSeo({
           <li>
             <p class="label-caps text-charcoal/70">Presence</p>
             <p class="mt-3 font-normal text-charcoal/80">
-              Phantom, Dawn, Cullinan, SF90, Huracán, chosen because they carry weight in a frame and on a
-              kerb, not because they fill a spreadsheet.
+              Phantom, Dawn, Cullinan, SF90, and our Huracán collection, chosen because they carry weight in a
+              frame and on a kerb, not because they fill a spreadsheet.
             </p>
           </li>
         </ul>
+        <p class="mt-12">
+          <NuxtLink to="/faq" class="link-gold-on-stone text-sm">Read frequently asked questions →</NuxtLink>
+        </p>
+
+        <div class="mt-20 border-t border-onyx/10 pt-16 md:pt-20">
+          <p class="label-caps text-charcoal/70">Client voices</p>
+          <h2 class="heading-section mt-4 text-onyx">Trusted on the day</h2>
+          <p class="mt-4 max-w-lg font-normal leading-relaxed text-charcoal/80">
+            A few notes from recent hires.
+          </p>
+          <ReviewCarousel class="mt-12" :testimonials="testimonials" />
+        </div>
       </div>
     </section>
 

@@ -18,6 +18,9 @@ export default {
       fontFamily: {
         sans: ['Dienstag', 'Montserrat', 'system-ui', 'sans-serif'],
       },
+      fontWeight: {
+        normal: '500',
+      },
       letterSpacing: {
         widest: '0.2em',
         wider: '0.12em',

@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { services } from '~/data/services'
+import { images } from '~/data/images'
 
 usePageSeo({
   title: 'Services',
   description:
     'Weddings, galas, luxury airport transfers, film and music video hire, chauffeured Rolls-Royce and self-drive Ferrari and Lamborghini, Novaire, UK-wide.',
+  image: images.wedding,
 })
 
-function isDarkBand(index: number) {
-  return index % 2 === 0
+function isOnyxBand(index: number) {
+  return index % 2 !== 0
 }
 
 /** Mobile: even rows image→text, odd rows text→image; desktop alternates columns */
@@ -23,7 +25,7 @@ function mediaOrder(index: number) {
 
 <template>
   <div>
-    <section class="section-pad bg-charcoal pt-32 pb-12 md:pb-16">
+    <section class="section-pad bg-onyx pt-32 pb-12 md:pb-16">
       <div class="content-wrap">
         <SectionHeading
           label="Services"
@@ -37,7 +39,7 @@ function mediaOrder(index: number) {
       v-for="(service, index) in services"
       :key="service.slug"
       class="section-pad"
-      :class="isDarkBand(index) ? 'bg-charcoal' : 'bg-stone text-onyx'"
+      :class="isOnyxBand(index) ? 'bg-onyx' : 'bg-stone text-onyx'"
     >
       <article class="content-wrap grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center md:gap-16">
         <div :class="mediaOrder(index)">
@@ -51,19 +53,19 @@ function mediaOrder(index: number) {
           />
         </div>
         <div :class="copyOrder(index)">
-          <h2 class="heading-section" :class="isDarkBand(index) ? '' : 'text-onyx'">
+          <h2 class="heading-section" :class="isOnyxBand(index) ? '' : 'text-onyx'">
             {{ service.title }}
           </h2>
           <p
             class="mt-5 max-w-lg font-normal leading-relaxed"
-            :class="isDarkBand(index) ? 'text-grey' : 'text-charcoal/80'"
+            :class="isOnyxBand(index) ? 'text-grey' : 'text-charcoal/80'"
           >
             {{ service.description }}
           </p>
           <NuxtLink
-            :to="{ path: '/contact', query: { service: service.title } }"
+            :to="{ path: '/contact', query: { service: service.slug } }"
             class="mt-8"
-            :class="isDarkBand(index) ? 'btn-primary' : 'btn-on-stone'"
+            :class="isOnyxBand(index) ? 'btn-primary' : 'btn-on-stone'"
           >
             Enquire
           </NuxtLink>

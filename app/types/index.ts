@@ -45,6 +45,8 @@ export interface Vehicle {
 export interface Service {
   slug: string
   label: string
+  /** Value stored in the contact form service field */
+  formLabel: string
   title: string
   summary: string
   description: string

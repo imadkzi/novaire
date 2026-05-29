@@ -1,16 +1,23 @@
 <script setup lang="ts">
 import { getFeaturedFleet } from '~/data/fleet'
-import { services } from '~/data/services'
+import { getHomeFeaturedServices } from '~/data/services'
+import { getHomeTestimonials } from '~/data/testimonials'
 import { images } from '~/data/images'
 
 usePageSeo({
   title: 'Chauffeured & Self-Drive Supercars',
   description:
-    'Novaire, Rolls-Royce Phantom, Dawn and Cullinan chauffeur hire, Ferrari SF90 and Lamborghini Huracán self-drive, for weddings, galas, airport transfers and film.',
+    'Novaire, Rolls-Royce and Ferrari chauffeur hire, Lamborghini Huracán and supercar self-drive, for weddings, galas, airport transfers and film across the UK.',
+  image: images.hero,
+})
+
+useHead({
+  link: [{ rel: 'preload', as: 'image', href: images.hero }],
 })
 
 const featured = getFeaturedFleet()
-const featuredServices = services.slice(0, 3)
+const featuredServices = getHomeFeaturedServices()
+const homeTestimonials = getHomeTestimonials()
 </script>
 
 <template>
@@ -66,14 +73,12 @@ const featuredServices = services.slice(0, 3)
         <SectionHeading
           label="Services"
           title="Every occasion, considered"
-          description="Six services from bridal mornings to music-video units, explore the full range or start with our most requested below."
+          description="From bridal mornings to music-video units, explore the full range or start with our most requested below."
         />
-        <div class="mt-14 grid gap-8 md:grid-cols-3 2xl:gap-10 4xl:gap-12">
-          <ServiceCard v-for="service in featuredServices" :key="service.slug" :service="service" />
-        </div>
+        <HomeServicesShowcase :services="featuredServices" />
         <div class="mt-12">
           <NuxtLink to="/services" class="link-gold text-sm">
-            All six services →
+            All services →
           </NuxtLink>
         </div>
       </div>
@@ -93,17 +98,22 @@ const featuredServices = services.slice(0, 3)
           </p>
           <NuxtLink to="/experience" class="btn-on-stone mt-8">Our experience</NuxtLink>
         </div>
-        <blockquote class="border-l-2 border-gold pl-8">
-          <p class="text-xl font-normal italic leading-relaxed text-charcoal">
-            “Our wedding morning ran to time because the chauffeur already knew the venue, the photos, and
-            when we needed five more minutes. That level of calm is rare.”
+        <div class="space-y-10">
+          <TestimonialQuote
+            v-for="(item, index) in homeTestimonials"
+            :key="item.id"
+            :testimonial="item"
+            :emphasized="index === 0"
+            class="pl-8"
+          />
+          <p class="text-sm">
+            <NuxtLink to="/experience" class="link-gold-on-stone">More notes from recent hires →</NuxtLink>
           </p>
-          <footer class="mt-4 text-xs tracking-wide text-charcoal/60">
-            Bride, Cotswolds estate
-          </footer>
-        </blockquote>
+        </div>
       </div>
     </section>
+
+    <TrustStrip />
 
     <CtaBand />
   </div>

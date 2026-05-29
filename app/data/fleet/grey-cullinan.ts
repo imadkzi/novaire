@@ -75,5 +75,4 @@ export const greyCullinan = buildVehicle(FOLDER, {
     { label: 'Drivetrain', value: 'AWD · Black Badge' },
     { label: 'Availability', value: 'UK-wide' },
   ],
-  featured: true,
 })
